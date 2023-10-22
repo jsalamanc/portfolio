@@ -1,10 +1,10 @@
-"use client";
-import { useCallback } from "react";
-import Particles from "react-tsparticles";
-import { loadFull } from "tsparticles";
-import type { Engine } from "tsparticles-engine";
-import { optionParticles } from "./particleOptions";
-import Image from "next/image";
+'use client';
+import { useCallback } from 'react';
+import Particles from 'react-tsparticles';
+import { loadFull } from 'tsparticles';
+import type { Engine } from 'tsparticles-engine';
+import { optionParticles } from './particleOptions';
+import Image from 'next/image';
 
 export const Hero = () => {
   const particlesInit = useCallback(async (engine: Engine) => {
@@ -15,7 +15,7 @@ export const Hero = () => {
     <>
       <section
         className="relative w-full h-screen bg-gray-900 bg-[url(/assets/pattern-hero.svg)] min-h-screen flex items-center"
-        style={{ backgroundColor: "hsl(198 86% 5%/1)", contain: "content" }}
+        style={{ backgroundColor: 'hsl(198 86% 5%/1)', contain: 'content' }}
       >
         <Particles
           className="absolute top-0 bottom-0"
@@ -30,7 +30,7 @@ export const Hero = () => {
             </div>
             <div>
               <h1 className="font-bold text-4xl text-white">
-                Hi! I'm Jsalamanc
+                Hi! Im Jsalamanc
               </h1>
               <span className="font-bold text-5xl text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-sky-400">
                 FullStack Developer
@@ -47,28 +47,28 @@ export const Hero = () => {
 
         <div className="absolute bottom-0 m-auto left-0 right-0 rounded-md p-4 w-11/12 bg-cyan-800 flex items-center justify-evenly flex-wrap gap-4">
           <Image
-            src={"/assets/nextjs.svg"}
+            src={'/assets/nextjs.svg'}
             alt=""
             width={100}
             height={100}
             title="nextjs"
           />
           <Image
-            src={"/assets/nodejs.svg"}
+            src={'/assets/nodejs.svg'}
             alt=""
             width={100}
             height={100}
             title="nodejs"
           />
           <Image
-            src={"/assets/sass.svg"}
+            src={'/assets/sass.svg'}
             alt=""
             width={90}
             height={90}
             title="sass"
           />
           <Image
-            src={"/assets/tailwindcss.svg"}
+            src={'/assets/tailwindcss.svg'}
             alt=""
             width={170}
             height={200}
