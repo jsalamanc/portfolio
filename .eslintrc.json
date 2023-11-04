@@ -51,7 +51,8 @@
     "no-nested-ternary": "off",
     "no-unneeded-ternary": "off",
     "prefer-const": "off",
-    "@typescript-eslint/indent": "off"
+    "@typescript-eslint/indent": "off",
+    "import/order": "off"
   },
   "settings": {
     "react": {
