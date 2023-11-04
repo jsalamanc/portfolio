@@ -1,4 +1,4 @@
-import type { ISourceOptions } from "tsparticles-engine";
+import type { ISourceOptions } from 'tsparticles-engine';
 
 export const optionParticles: ISourceOptions = {
   fpsLimit: 120,
@@ -7,11 +7,11 @@ export const optionParticles: ISourceOptions = {
     events: {
       onClick: {
         enable: true,
-        mode: "push",
+        mode: 'push',
       },
       onHover: {
         enable: true,
-        mode: "repulse",
+        mode: 'repulse',
       },
       resize: true,
     },
@@ -26,9 +26,9 @@ export const optionParticles: ISourceOptions = {
     },
   },
   particles: {
-    color: { value: "#ffffff" },
+    color: { value: '#ffffff' },
     links: {
-      color: "#ffffff",
+      color: '#ffffff',
       distance: 150,
       enable: true,
       opacity: 0.5,
@@ -52,7 +52,7 @@ export const optionParticles: ISourceOptions = {
       value: 80,
     },
     opacity: { value: 0.5 },
-    shape: { type: "circle" },
+    shape: { type: 'circle' },
     size: {
       value: {
         min: 1,

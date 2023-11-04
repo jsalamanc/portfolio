@@ -5,8 +5,8 @@ import { Contact } from '@/components/pages/home/Contact/Contact';
 
 export default function Home() {
   return (
-    <main className="">
-      <button className="absolute" />
+    <main className=''>
+      <button className='absolute' />
       <Hero />
       <AboutMe />
       <Projects />
