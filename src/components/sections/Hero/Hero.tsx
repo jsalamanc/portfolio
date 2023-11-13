@@ -65,8 +65,39 @@ export const Hero = ({
       'w-full h-[112px]': !description,
       'rounded-md p-5 bg-slate-700': !description,
     }),
-  };
 
+    stack: cn(
+      'absolute left-0 right-0 bottom-0',
+      'm-auto rounded-md w-11/12 p-4 bg-cyan-800',
+      'flex items-center justify-evenly flex-wrap gap-4'
+    ),
+  };
+  const dataImgs = [
+    {
+      src: '/assets/nextjs.svg',
+      with: 100,
+      height: 100,
+      title: 'nextjs',
+    },
+    {
+      src: '/assets/nodejs.svg',
+      with: 100,
+      height: 100,
+      title: 'nodejs',
+    },
+    {
+      src: '/assets/sass.svg',
+      with: 90,
+      height: 90,
+      title: 'sass',
+    },
+    {
+      src: '/assets/tailwindcss.svg',
+      with: 170,
+      height: 200,
+      title: 'tailwind css',
+    },
+  ];
   return (
     <>
       <section
@@ -92,35 +123,16 @@ export const Hero = ({
             />
           </div>
         </div>
-        <div className='absolute bottom-0 m-auto left-0 right-0 rounded-md p-4 w-11/12 bg-cyan-800 flex items-center justify-evenly flex-wrap gap-4'>
-          <Image
-            src='/assets/nextjs.svg'
-            alt=''
-            width={100}
-            height={100}
-            title='nextjs'
-          />
-          <Image
-            src='/assets/nodejs.svg'
-            alt=''
-            width={100}
-            height={100}
-            title='nodejs'
-          />
-          <Image
-            src='/assets/sass.svg'
-            alt=''
-            width={90}
-            height={90}
-            title='sass'
-          />
-          <Image
-            src='/assets/tailwindcss.svg'
-            alt=''
-            width={170}
-            height={200}
-            title='tailwinds'
-          />
+        <div className={styles.stack}>
+          {dataImgs?.map((img) => (
+            <Image
+              src={img.src}
+              alt=''
+              width={img.with}
+              height={img.height}
+              title={img.title}
+            />
+          ))}
         </div>
       </section>
     </>

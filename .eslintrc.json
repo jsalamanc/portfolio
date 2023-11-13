@@ -53,7 +53,8 @@
     "prefer-const": "off",
     "@typescript-eslint/indent": "off",
     "import/order": "off",
-    "react/require-default-props": "off"
+    "react/require-default-props": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off"
   },
   "settings": {
     "react": {

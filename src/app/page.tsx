@@ -16,7 +16,6 @@ export default function Home() {
   }
   return (
     <Container>
-      <button className='absolute' />
       <Hero
         firstTitle={data?.data?.metadata?.hero?.first_title}
         secondTitle={data?.data?.metadata?.hero?.second_title}
@@ -25,7 +24,7 @@ export default function Home() {
       />
       <AboutMe
         aboutMe={data?.data?.metadata?.about_me?.description}
-        extras={data?.data?.metadata?.about_me?.extras}
+        extras={data?.data?.metadata?.about_me?.extras || []}
       />
       <Projects />
       <Contact />
