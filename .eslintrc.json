@@ -52,7 +52,8 @@
     "no-unneeded-ternary": "off",
     "prefer-const": "off",
     "@typescript-eslint/indent": "off",
-    "import/order": "off"
+    "import/order": "off",
+    "react/require-default-props": "off"
   },
   "settings": {
     "react": {

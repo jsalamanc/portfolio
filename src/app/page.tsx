@@ -1,32 +1,34 @@
 'use client';
 
-import { fetcher } from '@/hooks/fetcher';
-import { useEffect } from 'react';
+import { IndexProps } from '@/lib/types/routes/Index.types';
+import { Container } from '@/components/layout/Container';
 import { Hero } from '@/components/sections/Hero/Hero';
 import { AboutMe } from '@/components/pages/home/AboutMe/AboutMe';
 import { Projects } from '@/components/pages/home/Projects/Projects';
 import { Contact } from '@/components/pages/home/Contact/Contact';
+import { useFetch } from '@/hooks/swr';
 
 export default function Home() {
-  const res = fetcher('/api/');
-  useEffect(() => {
-    console.log(res);
-  }, [res]);
-
+  const { data, isLoading, error } = useFetch<IndexProps>('/api');
+  console.log(data);
+  if (error) {
+    return <div>Error</div>;
+  }
   return (
-    <main className=''>
+    <Container>
       <button className='absolute' />
       <Hero
-        firstTitle={'Welcome to my web'}
-        secondTitle={'Hi! Im Jsalamanc'}
-        thirdTitle={'FullStack Developer'}
-        description={
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus nemo debitis, eaque est at libero reprehenderit eligendi unde dolor dicta eum sapiente modi recusandae blanditiis dignissimos iusto, similique error sed.'
-        }
+        firstTitle={data?.data?.metadata?.hero?.first_title}
+        secondTitle={data?.data?.metadata?.hero?.second_title}
+        thirdTitle={data?.data?.metadata?.hero?.third_title}
+        description={data?.data?.metadata?.hero?.description}
       />
-      <AboutMe />
+      <AboutMe
+        aboutMe={data?.data?.metadata?.about_me?.description}
+        extras={data?.data?.metadata?.about_me?.extras}
+      />
       <Projects />
       <Contact />
-    </main>
+    </Container>
   );
 }

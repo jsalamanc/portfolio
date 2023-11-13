@@ -1,8 +1,7 @@
-export const fetcher = async (url: string) => {
-  const res = await fetch(url, {
-    next: { revalidate: 5 },
+export const fetcher = (url: string) =>
+  fetch(url, {
     method: 'GET',
-  });
-  const data = await res.json();
-  return data;
-};
+    headers: {
+      'access-control-allow-credentials': `${process.env.API_KEY}`,
+    },
+  }).then((res) => res.json());

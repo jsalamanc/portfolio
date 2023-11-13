@@ -1,31 +1,30 @@
 'use client';
+
+import { AboutMeProps, SelectedTabProps } from './types';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { InnerHtml } from '@/components/sections/InnerHtml/InnerHtml';
+import { AboutMeLoading } from './AboutMeLoading';
 
-const tabs = [
-  { icon: '🍅', label: 'Education' },
-  { icon: '🥬', label: 'Certifications' },
-];
-export const AboutMe = () => {
-  const [selectedTab, setSelectedTab] = useState(tabs[0]);
+export const AboutMe = ({ aboutMe = '', extras = [] }: AboutMeProps) => {
+  const [selectedTab, setSelectedTab] = useState<SelectedTabProps>(extras[0]);
   return (
-    <div className='w-full px-4 py-14 bg-gray-900'>
+    <div className='w-full px-4 py-14 bg-gray-900 transition'>
       <div className='m-auto container flex flex-wrap'>
-        <div className='w-full lg:w-[50%]'></div>
+        <div className='w-full lg:w-[50%]' />
         <div className='w-full lg:w-[50%]'>
           <h1 className='capitalize text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-l  from-[#5A32A3] to-[#D03592]'>
             About Me
           </h1>
-          <p className='mt-4 text-slate-400'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. A dicta est
-            quos voluptate similique aperiam commodi tempore maxime
-            exercitationem molestias esse quis magnam libero, fugit vitae sequi
-            velit dolores fuga!
-          </p>
+          {!aboutMe ? (
+            <AboutMeLoading />
+          ) : (
+            <p className='mt-4 text-slate-400'>{aboutMe}</p>
+          )}
           <div className='mt-4'>
             <nav>
               <ul className='flex'>
-                {tabs.map((item, index) => (
+                {extras?.map((item, index) => (
                   <li
                     key={index}
                     className={item === selectedTab ? 'selected' : ''}
@@ -61,7 +60,14 @@ export const AboutMe = () => {
                 exit={{ y: -10, opacity: 0 }}
                 transition={{ duration: 0.2 }}
               >
-                {selectedTab ? selectedTab.icon : ''}
+                {selectedTab ? (
+                  <InnerHtml
+                    className='text-slate-400'
+                    data={selectedTab.items || ''}
+                  />
+                ) : (
+                  ''
+                )}
               </motion.div>
             </AnimatePresence>
           </div>

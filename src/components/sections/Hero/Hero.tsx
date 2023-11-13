@@ -4,8 +4,10 @@ import { HeroProps } from './types';
 import type { Engine } from 'tsparticles-engine';
 import { useCallback } from 'react';
 import { loadFull } from 'tsparticles';
+import { cn } from '@/hooks/cn';
 import Particles from 'react-tsparticles';
 import { optionParticles } from './particleOptions';
+import { InnerHtml } from '@/components/sections/InnerHtml/InnerHtml';
 import Image from 'next/image';
 
 export const Hero = ({
@@ -14,10 +16,56 @@ export const Hero = ({
   thirdTitle,
   description,
 }: HeroProps) => {
+  /*
+   * initialize the tsparticles component
+   */
+
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadFull(engine);
   }, []);
-  const particlesLoaded = useCallback(async () => {}, []);
+  const particlesLoaded: () => Promise<void> = useCallback(async () => {}, []);
+
+  /*
+   *  styles of sections are determined by the following properties of the component
+   */
+
+  const styles = {
+    firstTitle: cn(
+      'mb-4 p-2',
+      'font-bold text-white select-none',
+      {
+        'w-fit border border-sky-200': firstTitle,
+        'bg-gradient-to-r from-sky-800 to-sky-600': firstTitle,
+      },
+      {
+        'animate-pulse': !firstTitle,
+        'w-52	rounded-md p-5 bg-slate-700': !firstTitle,
+      }
+    ),
+
+    secondTitle: cn('font-bold text-4xl text-white', {
+      'animate-pulse': !secondTitle,
+      'mb-3 rounded-md w-[23rem] p-5 bg-slate-700': !secondTitle,
+    }),
+
+    thirdTitle: cn(
+      'font-bold text-5xl text-transparent',
+      {
+        'bg-clip-text bg-gradient-to-r from-teal-400 to-sky-400': thirdTitle,
+      },
+      {
+        'animate-pulse': !thirdTitle,
+        'w-[85%] md:w-[33rem]': !thirdTitle,
+        'rounded-md p-6 bg-slate-700': !thirdTitle,
+      }
+    ),
+
+    description: cn('mt-3 text-slate-400', {
+      'animate-pulse': !description,
+      'w-full h-[112px]': !description,
+      'rounded-md p-5 bg-slate-700': !description,
+    }),
+  };
 
   return (
     <>
@@ -32,30 +80,17 @@ export const Hero = ({
           options={optionParticles}
         />
         <div className='m-auto container'>
-          {!firstTitle && !secondTitle && !thirdTitle && !description ? null : (
-            <div className='relative z-10 sm:w-3/4 md:w-6/12'>
-              {firstTitle && (
-                <div className='mb-4 border border-sky-200 w-fit p-2 bg-gradient-to-r from-sky-800 to-sky-600 font-bold text-white select-none'>
-                  {firstTitle}
-                </div>
-              )}
-              <div>
-                {secondTitle && (
-                  <h1 className='font-bold text-4xl text-white'>
-                    {secondTitle}
-                  </h1>
-                )}
-                {thirdTitle && (
-                  <span className='font-bold text-5xl text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-sky-400'>
-                    {thirdTitle}
-                  </span>
-                )}
-              </div>
-              {description && (
-                <p className='mt-3 text-slate-400'>{description}</p>
-              )}
+          <div className='relative z-10 sm:w-3/4 md:w-6/12'>
+            <div className={styles.firstTitle}>{firstTitle}</div>
+            <div>
+              <h1 className={styles.secondTitle}>{secondTitle}</h1>
+              <p className={styles.thirdTitle}>{thirdTitle}</p>
             </div>
-          )}
+            <InnerHtml
+              className={styles.description}
+              data={description || ''}
+            />
+          </div>
         </div>
         <div className='absolute bottom-0 m-auto left-0 right-0 rounded-md p-4 w-11/12 bg-cyan-800 flex items-center justify-evenly flex-wrap gap-4'>
           <Image
