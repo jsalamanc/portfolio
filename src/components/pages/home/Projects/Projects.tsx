@@ -1,4 +1,5 @@
 'use client';
+
 import { useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -22,7 +23,7 @@ export const Projects = () => {
         <Swiper
           slidesPerView={3}
           spaceBetween={30}
-          freeMode={true}
+          freeMode
           pagination={{
             clickable: true,
           }}

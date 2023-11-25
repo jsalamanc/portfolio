@@ -10,7 +10,7 @@ import { useFetch } from '@/hooks/swr';
 
 export default function Home() {
   const { data, isLoading, error } = useFetch<IndexProps>('/api');
-  console.log(data);
+
   if (error) {
     return <div>Error</div>;
   }
