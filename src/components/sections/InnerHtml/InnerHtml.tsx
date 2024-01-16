@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import DOMPurify from 'dompurify';
+import { sanitize } from 'dompurify';
 
 export const InnerHtml = ({
   className = '',
@@ -13,7 +13,7 @@ export const InnerHtml = ({
   return (
     <div
       className={className}
-      dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(data || '') }}
+      dangerouslySetInnerHTML={{ __html: sanitize(data || '') }}
     />
   );
 };
