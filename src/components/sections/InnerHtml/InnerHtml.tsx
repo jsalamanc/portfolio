@@ -5,7 +5,7 @@ import DOMPurify from 'dompurify';
 
 export const InnerHtml = ({
   className = '',
-  data,
+  data = '',
 }: {
   className: string;
   data: string;
@@ -13,7 +13,7 @@ export const InnerHtml = ({
   return (
     <div
       className={className}
-      dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(data) }}
+      dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(data || '') }}
     />
   );
 };

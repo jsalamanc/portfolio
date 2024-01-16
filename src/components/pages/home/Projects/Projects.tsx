@@ -1,6 +1,5 @@
 'use client';
 
-import { useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/free-mode';
@@ -31,19 +30,39 @@ export const Projects = () => {
           className='mySwiper'
         >
           <SwiperSlide>
-            <CardProject />
+            <CardProject
+              background='/assets/wbsite.webp'
+              title='Company websites'
+              description='Manage content efficiently and equip your entire team.'
+            />
           </SwiperSlide>
           <SwiperSlide>
-            <CardProject />
+            <CardProject
+              background='/assets/wbsite.webp'
+              title='Company websites'
+              description='Manage content efficiently and equip your entire team.'
+            />
           </SwiperSlide>
           <SwiperSlide>
-            <CardProject />
+            <CardProject
+              background='/assets/wbsite.webp'
+              title='Company websites'
+              description='Manage content efficiently and equip your entire team.'
+            />
           </SwiperSlide>
           <SwiperSlide>
-            <CardProject />
+            <CardProject
+              background='/assets/wbsite.webp'
+              title='Company websites'
+              description='Manage content efficiently and equip your entire team.'
+            />
           </SwiperSlide>
           <SwiperSlide>
-            <CardProject />
+            <CardProject
+              background='/assets/wbsite.webp'
+              title='Company websites'
+              description='Manage content efficiently and equip your entire team.'
+            />
           </SwiperSlide>
         </Swiper>
       </div>

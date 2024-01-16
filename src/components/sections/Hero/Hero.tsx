@@ -32,10 +32,9 @@ export const Hero = ({
   const styles = {
     firstTitle: cn(
       'mb-4 p-2',
-      'font-bold text-white select-none',
+      'font-bold text-white',
       {
-        'w-fit border border-sky-200': firstTitle,
-        'bg-gradient-to-r from-sky-800 to-sky-600': firstTitle,
+        'w-fit rounded-md border-2 border-sky-200': firstTitle,
       },
       {
         'animate-pulse': !firstTitle,
@@ -43,13 +42,13 @@ export const Hero = ({
       }
     ),
 
-    secondTitle: cn('font-bold text-4xl text-white', {
+    secondTitle: cn('font-bold text-[1.5rem]  md:text-4xl text-white', {
       'animate-pulse': !secondTitle,
       'mb-3 rounded-md w-[23rem] p-5 bg-slate-700': !secondTitle,
     }),
 
     thirdTitle: cn(
-      'font-bold text-5xl text-transparent',
+      'font-bold text-[1.8rem] md:text-5xl text-transparent',
       {
         'bg-clip-text bg-gradient-to-r from-teal-400 to-sky-400': thirdTitle,
       },
@@ -68,7 +67,7 @@ export const Hero = ({
 
     stack: cn(
       'absolute left-0 right-0 bottom-0',
-      'm-auto rounded-md w-11/12 p-4 bg-cyan-800',
+      'm-auto rounded-md w-11/12 max-w-[83rem] p-4 bg-cyan-800',
       'flex items-center justify-evenly flex-wrap gap-4'
     ),
   };
@@ -110,7 +109,7 @@ export const Hero = ({
           loaded={particlesLoaded}
           options={optionParticles}
         />
-        <div className='m-auto container'>
+        <div className='m-auto w-[95%] max-w-[82rem]'>
           <div className='relative z-10 sm:w-3/4 md:w-6/12'>
             <div className={styles.firstTitle}>{firstTitle}</div>
             <div>

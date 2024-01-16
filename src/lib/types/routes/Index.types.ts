@@ -1,24 +1,47 @@
-import { GenericProps } from './globals.types';
+import {
+  BlogRouteProps,
+  IndexBlogProps,
+} from '@/lib/types/routes/blog/Blog.types';
+import { GlobalTypes } from './globals.types';
 
-export type AboutMeExtrasItemProps = {
-  label?: string;
-  items?: string;
-};
-
-export type AboutMeExtrasProps = AboutMeExtrasItemProps[];
-
-export type SectionsProps = {
-  hero: {
+export declare namespace IndexSectionsProps {
+  interface HeroProps {
     first_title?: string;
     second_title?: string;
     third_title?: string;
     description?: string;
     tecnology?: any[];
-  };
-  about_me?: {
-    description?: string;
-    extras?: AboutMeExtrasProps;
-  };
+  }
+
+  interface AboutMeProps {
+    first_image?: GlobalTypes.ImageTypes;
+    first_title?: string;
+    first_description?: string;
+    second_image?: GlobalTypes.ImageTypes;
+    second_title?: string;
+    second_description?: string;
+    list_of_skills?: {
+      percentage?: string;
+      skill?: string;
+    }[];
+  }
+
+  interface BLogProps {
+    featured_publication?: GlobalTypes.EntryTypes<BlogRouteProps.BlogEntry>[];
+  }
+}
+
+export type SectionsProps = {
+  hero: IndexSectionsProps.HeroProps;
+  about_me?: IndexSectionsProps.AboutMeProps;
+  blog: IndexSectionsProps.BLogProps;
 };
 
-export type IndexProps = GenericProps<SectionsProps>;
+// TYPES OF FRONTEND VIEW
+export type IndexProps = {
+  metadata?: SectionsProps;
+  blogEntries?: IndexBlogProps;
+};
+
+// TYPES OF BACKEND
+export type IndexBackProps = SectionsProps;

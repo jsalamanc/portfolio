@@ -1,6 +1,9 @@
 import { apiConstants } from '@/config/constants';
 import { GetPageBySlugProps } from '@/lib/types/api.types';
 import { createBucketClient } from '@cosmicjs/sdk';
+import axios from 'axios';
+import { useQuery } from '@tanstack/react-query';
+import { GlobalReactQueryTypes } from './types/routes/globals.types';
 
 export const bucket = createBucketClient({
   bucketSlug: `${process.env.COSMIC_BUCKET_SLUG}`,
@@ -8,12 +11,12 @@ export const bucket = createBucketClient({
   writeKey: `${process.env.COSMIC_WRITE_KEY}`,
 });
 
-export const getPageBySlug = (
+export const getPageBySlug = <Types = undefined>(
   query: GetPageBySlugProps['query'],
   props: GetPageBySlugProps['props'],
   others: GetPageBySlugProps['others']
 ) => {
-  return new Promise((resolve, reject) => {
+  return new Promise<Types>((resolve, reject) => {
     bucket.objects
       .find(query)
       .props(props)
@@ -42,8 +45,12 @@ export const getByQuery = (query: any, props: string, others: any) => {
   });
 };
 
-export const getFullByQuery = (query: any, props: string, others: any) => {
-  return new Promise((resolve, reject) => {
+export const getFullByQuery = <Types>(
+  query: any,
+  props: string[],
+  others: any
+) => {
+  return new Promise<Types>((resolve, reject) => {
     bucket.objects
       .find(query)
       .props(props)
@@ -56,4 +63,19 @@ export const getFullByQuery = (query: any, props: string, others: any) => {
         reject(err);
       });
   });
+};
+
+export const fetcher = axios.create({ baseURL: process.env.NEXT_URL_PAGE });
+
+export const useGetData = <Props>(
+  queryKey: GlobalReactQueryTypes.UseGetDataProps['queryKey'],
+  queryFn: GlobalReactQueryTypes.UseGetDataProps['queryFn']
+) => {
+  const { data, isLoading, isError, status } = useQuery<
+    GlobalReactQueryTypes.QueryResponse<Props>
+  >({
+    queryKey,
+    queryFn,
+  });
+  return { data, isError, isLoading, status };
 };

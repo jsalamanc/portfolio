@@ -54,7 +54,10 @@
     "@typescript-eslint/indent": "off",
     "import/order": "off",
     "react/require-default-props": "off",
-    "jsx-a11y/no-noninteractive-element-interactions": "off"
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "jsx-a11y/control-has-associated-label": "off",
+    "react/prop-types": "off",
+    "global-require": "off"
   },
   "settings": {
     "react": {
