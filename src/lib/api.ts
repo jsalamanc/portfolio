@@ -78,6 +78,7 @@ export const useGetData = <Props>(
   >({
     queryKey,
     queryFn,
+    staleTime: 1000 * 60 * 5,
   });
   return { data, isError, isLoading, status };
 };

@@ -1,6 +1,9 @@
+import { Metadata } from 'next';
+import { fetcher } from '@/lib/api';
+import { dehydrate } from '@tanstack/query-core';
+import { HydrationBoundary, QueryClient } from '@tanstack/react-query';
 import { Container } from '@/components/layout/Container';
 import { BlogPage } from '@/components/pages/home/Blog/BlogPage';
-import { Metadata } from 'next';
 
 export async function generateMetadata() {
   const data: any = await fetch(`${process.env.NEXT_URL_PAGE}/api/blog/`).then(
@@ -15,10 +18,23 @@ export async function generateMetadata() {
 
   return metadata;
 }
-export default function Blog() {
+
+const fetchData = async () => {
+  const res = await fetcher.get('/api/blog');
+  return res.data;
+};
+export default async function Blog() {
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery({
+    queryKey: ['blog'],
+    queryFn: fetchData,
+  });
   return (
-    <Container>
-      <BlogPage />
-    </Container>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <Container>
+        <BlogPage />
+      </Container>
+    </HydrationBoundary>
   );
 }
