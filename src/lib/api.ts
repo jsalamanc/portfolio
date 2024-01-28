@@ -65,7 +65,9 @@ export const getFullByQuery = <Types>(
   });
 };
 
-export const fetcher = axios.create({ baseURL: process.env.NEXT_URL_PAGE });
+export const fetcher = axios.create({
+  baseURL: process.env.NEXT_URL_PAGE,
+});
 
 export const useGetData = <Props>(
   queryKey: GlobalReactQueryTypes.UseGetDataProps['queryKey'],

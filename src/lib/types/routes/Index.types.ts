@@ -32,6 +32,7 @@ export declare namespace IndexSectionsProps {
 }
 
 export type SectionsProps = {
+  seo_metadata?: GlobalTypes.SeoMetadata;
   hero: IndexSectionsProps.HeroProps;
   about_me?: IndexSectionsProps.AboutMeProps;
   blog: IndexSectionsProps.BLogProps;
