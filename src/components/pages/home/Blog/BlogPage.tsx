@@ -1,7 +1,7 @@
 'use client';
 
 import { IndexBlogProps } from '@/lib/types/routes/blog/Blog.types';
-import { useRouter, usePathname } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { apiConstants } from '@/config/constants';
 import { getFullByQuery, useGetData } from '@/lib/api';
 import { ArticleThirteen } from '@/components/ui/Blog';
@@ -20,7 +20,7 @@ export const BlogPage = () => {
   const router = usePathname();
   const { data, status, isLoading } = useGetData<IndexBlogProps>(
     [router],
-    fetchData
+    router ? fetchData : () => ({})
   );
   if (status === 'error') <p>error...</p>;
   return (
