@@ -6,6 +6,8 @@ import './globals.css';
 
 const sora = Sora({ subsets: ['latin'] });
 
+export const revalidate = 200;
+
 export async function generateMetadata() {
   const product: IndexProps = await fetch(
     `${process.env.NEXT_URL_PAGE || ''}/api`
