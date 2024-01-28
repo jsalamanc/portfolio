@@ -1,12 +1,19 @@
 'use client';
 
 import { IndexBlogProps } from '@/lib/types/routes/blog/Blog.types';
-import { fetcher, useGetData } from '@/lib/api';
+import { apiConstants } from '@/config/constants';
+import { getFullByQuery, useGetData } from '@/lib/api';
 import { ArticleThirteen } from '@/components/ui/Blog';
 
 const fetchData = async () => {
-  const res = await fetcher.get('/api/blog');
-  return res.data;
+  const res = await getFullByQuery(
+    { type: apiConstants.blog },
+    ['title', 'slug', 'published_at', 'thumbnail', 'metadata'],
+    {
+      depth: 1,
+    }
+  );
+  return res;
 };
 export const BlogPage = () => {
   const { data, status, isLoading } = useGetData<IndexBlogProps>(
