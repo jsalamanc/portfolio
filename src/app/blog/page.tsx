@@ -1,10 +1,9 @@
 import { Metadata } from 'next';
 import { apiConstants } from '@/config/constants';
 import { getFullByQuery } from '@/lib/api';
-import { dehydrate } from '@tanstack/query-core';
-import { HydrationBoundary, QueryClient } from '@tanstack/react-query';
 import { Container } from '@/components/layout/Container';
 import { BlogPage } from '@/components/pages/home/Blog/BlogPage';
+import { IndexBlogProps } from '@/lib/types/routes/blog/Blog.types';
 
 export async function generateMetadata() {
   const data: any = await fetch(`${process.env.NEXT_URL_PAGE}/api/blog/`).then(
@@ -21,7 +20,7 @@ export async function generateMetadata() {
 }
 
 const fetchData = async () => {
-  const res = await getFullByQuery(
+  const res = await getFullByQuery<IndexBlogProps>(
     { type: apiConstants.blog },
     ['title', 'slug', 'published_at', 'thumbnail', 'metadata'],
     {
@@ -31,18 +30,11 @@ const fetchData = async () => {
   return res;
 };
 export default async function Blog() {
-  const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery({
-    queryKey: ['blog'],
-    queryFn: fetchData,
-  });
+  const data = await fetchData();
 
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <Container>
-        <BlogPage />
-      </Container>
-    </HydrationBoundary>
+    <Container>
+      <BlogPage {...data} />
+    </Container>
   );
 }
