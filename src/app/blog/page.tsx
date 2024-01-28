@@ -30,14 +30,13 @@ const fetchData = async () => {
   return res;
 };
 export default async function Blog() {
-  const data: IndexBlogProps | {} = await fetch(
+  let data: any = await fetch(
     'https://api.cosmicjs.com/v3/buckets/web-jsalamanc-production/objects?pretty=true&query=%7B%22type%22:%22blogs%22%7D&limit=10&read_key=fuLdzlYDeNIbB34rLJJ2K1GiN1T6BJvp8L74utQMIkNDIWaTJZ&depth=1&props=slug,title,metadata,thumbnail,published_at',
     {
       next: { revalidate: 500 },
-      cache: 'no-cache',
     }
   );
-
+  data = await data.json();
   return (
     <Container>
       <BlogPage {...data} />
