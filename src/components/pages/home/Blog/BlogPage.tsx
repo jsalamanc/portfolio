@@ -14,7 +14,6 @@ export const BlogPage = () => {
     fetchData
   );
   if (status === 'error') <p>error...</p>;
-  console.log(data);
   return (
     <section aria-labelledby='post-title' className='bg-gray-900'>
       <div className='wrapper pt-[5rem] m-auto w-[95%] max-w-[82rem]'>
