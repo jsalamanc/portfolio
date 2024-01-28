@@ -1,26 +1,7 @@
-'use client';
-
 import { IndexBlogProps } from '@/lib/types/routes/blog/Blog.types';
-import { apiConstants } from '@/config/constants';
-import { getFullByQuery, useGetData } from '@/lib/api';
 import { ArticleThirteen } from '@/components/ui/Blog';
 
-const fetchData = async () => {
-  const res = await getFullByQuery(
-    { type: apiConstants.blog },
-    ['title', 'slug', 'published_at', 'thumbnail', 'metadata'],
-    {
-      depth: 1,
-    }
-  );
-  return res;
-};
-export const BlogPage = () => {
-  const { data, status, isLoading } = useGetData<IndexBlogProps>(
-    ['blog'],
-    fetchData
-  );
-  if (status === 'error') <p>error...</p>;
+export const BlogPage = ({ objects }: IndexBlogProps) => {
   return (
     <section aria-labelledby='post-title' className='bg-gray-900'>
       <div className='wrapper pt-[5rem] m-auto w-[95%] max-w-[82rem]'>
@@ -28,7 +9,7 @@ export const BlogPage = () => {
           Publicaciones
         </h2>
         <div className='grid sm:grid-cols-2 lg:grid-cols-3 gap-8 pb-8'>
-          {data?.objects?.map((object, index) => (
+          {objects?.map((object, index) => (
             <ArticleThirteen
               key={object.title}
               thumbnail={object.thumbnail}
