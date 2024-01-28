@@ -1,3 +1,4 @@
+import { IndexProps } from '@/lib/types/routes/Index.types';
 import type { Metadata } from 'next';
 import { Sora } from 'next/font/google';
 import { Provider } from '@/lib/Provider';
@@ -5,11 +6,17 @@ import './globals.css';
 
 const sora = Sora({ subsets: ['latin'] });
 
-export const metadata: Metadata = {
-  title: 'Portfolio: jsalamanc',
-  description:
-    'Bienvenidos a mi web, donde podras saber mas sobre mi y conocer más sobre temas de programación',
-};
+export async function generateMetadata() {
+  const product: IndexProps = await fetch(
+    `${process.env.NEXT_URL_PAGE || ''}/api`
+  ).then((res) => res.json());
+  const metadata: Metadata = {
+    title: product?.metadata?.seo_metadata?.title,
+    description: product?.metadata?.seo_metadata?.description,
+    keywords: product?.metadata?.seo_metadata?.keywords,
+  };
+  return metadata;
+}
 
 export default function RootLayout({
   children,

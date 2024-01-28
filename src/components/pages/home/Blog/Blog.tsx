@@ -6,7 +6,12 @@ import { ArticlePrimary } from '@/components/ui/Blog/ArticlePrimary';
 export const Blog = ({ featuredPost = [], latestPosts = [] }: BlogProps) => {
   return (
     <section className='bg-gray-900'>
-      <div className='ml-auto mr-auto max-w-[82rem] pl-[1rem] pr-[1rem] w-[100%] flex flex-col lg:items-start lg:grid grid-cols-2 gap-8 py-16'>
+      <div className='pt-10 ml-auto mr-auto max-w-[82rem] pl-[1rem] pr-[1rem]'>
+        <h1 className=' text-white text-2xl sm:text-3xl font-semibold'>
+          Publicaciones
+        </h1>
+      </div>
+      <div className='ml-auto mr-auto max-w-[82rem] pl-[1rem] pr-[1rem] w-[100%] flex flex-col lg:items-start lg:grid grid-cols-2 gap-8 pt-10 pb-16'>
         <ArticlePrimary
           url={`/blog/post/${featuredPost[0]?.slug}`}
           title={`${featuredPost[0]?.title}`}

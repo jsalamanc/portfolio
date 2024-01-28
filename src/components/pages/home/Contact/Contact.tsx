@@ -3,7 +3,7 @@ import { Label, Input, TextArea, Button } from '@/components/ui/Form';
 
 export const Contact = () => {
   return (
-    <div className='relative'>
+    <div id='contact' className='relative'>
       <div className='h-[35rem] bg-gray-900'>
         <svg
           width='1512'

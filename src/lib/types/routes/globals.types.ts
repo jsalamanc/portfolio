@@ -7,6 +7,11 @@ export type GenericProps<TMetadata = undefined> = {
 };
 
 export declare namespace GlobalTypes {
+  interface SeoMetadata {
+    title?: string;
+    description?: string;
+    keywords?: string;
+  }
   interface ListEntriesProps<TMetadata> {
     objects?: TMetadata;
     total?: number;
