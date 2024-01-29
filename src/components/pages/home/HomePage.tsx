@@ -1,8 +1,10 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { IndexProps } from '@/lib/types/routes/Index.types';
-import { fetcher, useGetData } from '@/lib/api';
+import { IndexBackProps, IndexProps } from '@/lib/types/routes/Index.types';
+import { IndexBackBLogProps } from '@/lib/types/routes/blog/Blog.types';
+import { apiConstants } from '@/config/constants';
+import { getFullByQuery, getPageBySlug, useGetData } from '@/lib/api';
 import { Hero } from '@/components/sections/Hero/Hero';
 import { AboutMe } from './AboutMe/AboutMe';
 import { Blog } from '@/components/pages/home/Blog/Blog';
@@ -10,8 +12,21 @@ import { Blog } from '@/components/pages/home/Blog/Blog';
 import { Contact } from './Contact/Contact';
 
 const fetchData = async () => {
-  const res = await fetcher.get('/api');
-  return res.data;
+  const res = await getPageBySlug<IndexBackProps>(
+    { slug: apiConstants.home },
+    ['metadata'],
+    {
+      depth: 2,
+    }
+  );
+  const blogEntries = await getFullByQuery<IndexBackBLogProps>(
+    { type: apiConstants.blog },
+    ['slug', 'title', 'created_at', 'metadata', 'thumbnail'],
+    {
+      depth: 1,
+    }
+  );
+  return { ...res, blogEntries };
 };
 export const HomePage = () => {
   const router = usePathname();
