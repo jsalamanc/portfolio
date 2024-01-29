@@ -16,6 +16,10 @@ export async function generateMetadata() {
     title: product?.metadata?.seo_metadata?.title,
     description: product?.metadata?.seo_metadata?.description,
     keywords: product?.metadata?.seo_metadata?.keywords,
+    openGraph: {
+      title: product?.metadata?.seo_metadata?.title,
+      description: product?.metadata?.seo_metadata?.description,
+    },
   };
   return metadata;
 }
