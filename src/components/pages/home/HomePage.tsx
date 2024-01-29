@@ -1,5 +1,6 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import { IndexProps } from '@/lib/types/routes/Index.types';
 import { fetcher, useGetData } from '@/lib/api';
 import { Hero } from '@/components/sections/Hero/Hero';
@@ -13,13 +14,12 @@ const fetchData = async () => {
   return res.data;
 };
 export const HomePage = () => {
-  const { data, status, isLoading, isError } = useGetData<IndexProps>(
-    ['home'],
-    fetchData
+  const router = usePathname();
+  const { data, status } = useGetData<IndexProps>(
+    [router],
+    router ? fetchData : () => ({})
   );
-  if (isError) {
-    return <div>Error</div>;
-  }
+  if (status === 'error') <p>error...</p>;
   return (
     <>
       <Hero
