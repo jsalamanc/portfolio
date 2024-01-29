@@ -1,15 +1,15 @@
 'use client';
 
-import { IndexBlogProps } from '@/lib/types/routes/blog/Blog.types';
 import { usePathname } from 'next/navigation';
 import { apiConstants } from '@/config/constants';
+import { IndexBlogProps } from '@/lib/types/routes/blog/Blog.types';
 import { getFullByQuery, useGetData } from '@/lib/api';
 import { ArticleThirteen } from '@/components/ui/Blog';
 
 const fetchData = async () => {
   const res = await getFullByQuery(
     { type: apiConstants.blog },
-    ['title', 'slug', 'published_at', 'thumbnail', 'metadata'],
+    ['title', 'slug', 'created_at', 'thumbnail', 'metadata'],
     {
       depth: 1,
     }
@@ -18,7 +18,7 @@ const fetchData = async () => {
 };
 export const BlogPage = () => {
   const router = usePathname();
-  const { data, status, isLoading } = useGetData<IndexBlogProps>(
+  const { data, status } = useGetData<IndexBlogProps>(
     [router],
     router ? fetchData : () => ({})
   );

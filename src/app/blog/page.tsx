@@ -1,6 +1,4 @@
 import { Metadata } from 'next';
-import { apiConstants } from '@/config/constants';
-import { getFullByQuery } from '@/lib/api';
 import { Container } from '@/components/layout/Container';
 import { BlogPage } from '@/components/pages/home/Blog/BlogPage';
 
@@ -18,16 +16,6 @@ export async function generateMetadata() {
   return metadata;
 }
 
-const fetchData = async () => {
-  const res = await getFullByQuery(
-    { type: apiConstants.blog },
-    ['title', 'slug', 'published_at', 'thumbnail', 'metadata'],
-    {
-      depth: 1,
-    }
-  );
-  return res;
-};
 export default async function Blog() {
   return (
     <Container>
