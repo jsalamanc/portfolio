@@ -127,16 +127,6 @@ export const AboutMe = ({ firstSection, secondSection }: AboutMeProps) => {
           </div>
         </ContainerAboutMe>
       </div>
-      <div className='px-4 py-6 bg-cyan-800'>
-        <div className='m-auto w-full max-w-[83rem] flex items-center'>
-          <div className='flex items-center gap-[1rem]'>
-            <i className='bi bi-person-square text-cyan-200 text-[1.2rem]' />
-            <p className='text-cyan-200 uppercase'>
-              ¿Quieres saber más sobre mí?
-            </p>
-          </div>
-        </div>
-      </div>
     </>
   );
 };

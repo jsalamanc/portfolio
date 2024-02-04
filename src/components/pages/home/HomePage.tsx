@@ -1,33 +1,16 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { IndexBackProps, IndexProps } from '@/lib/types/routes/Index.types';
-import { IndexBackBLogProps } from '@/lib/types/routes/blog/Blog.types';
-import { apiConstants } from '@/config/constants';
-import { getFullByQuery, getPageBySlug, useGetData } from '@/lib/api';
+import { IndexProps } from '@/lib/types/routes/Index.types';
+import { fetchData } from './controllers';
+import { useGetData } from '@/lib/api';
 import { Hero } from '@/components/sections/Hero/Hero';
 import { AboutMe } from './AboutMe/AboutMe';
+import { SocialNetworks } from '@/components/ui/AboutMe/SocialNetworks';
 import { Blog } from '@/components/pages/home/Blog/Blog';
 // import { Projects } from '@/components/pages/home/Projects/Projects';
 import { Contact } from './Contact/Contact';
 
-const fetchData = async () => {
-  const res = await getPageBySlug<IndexBackProps>(
-    { slug: apiConstants.home },
-    ['metadata'],
-    {
-      depth: 2,
-    }
-  );
-  const blogEntries = await getFullByQuery<IndexBackBLogProps>(
-    { type: apiConstants.blog },
-    ['slug', 'title', 'created_at', 'metadata', 'thumbnail'],
-    {
-      depth: 1,
-    }
-  );
-  return { ...res, blogEntries };
-};
 export const HomePage = () => {
   const router = usePathname();
   const { data, status } = useGetData<IndexProps>(
@@ -35,6 +18,7 @@ export const HomePage = () => {
     router ? fetchData : () => ({})
   );
   if (status === 'error') <p>error...</p>;
+
   return (
     <>
       <Hero
@@ -55,6 +39,15 @@ export const HomePage = () => {
           description: data?.metadata?.about_me?.second_description,
           skills: data?.metadata?.about_me?.list_of_skills,
         }}
+      />
+      <SocialNetworks
+        instagramUrl={
+          data?.socialNetworks?.metadata?.social_network?.instagram || ''
+        }
+        githubUrl={data?.socialNetworks?.metadata?.social_network?.github || ''}
+        linkedinUrl={
+          data?.socialNetworks?.metadata?.social_network?.linkedin || ''
+        }
       />
       <Blog
         featuredPost={data?.metadata?.blog?.featured_publication}

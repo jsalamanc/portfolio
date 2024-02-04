@@ -37,6 +37,16 @@ export declare namespace GlobalTypes {
     type?: string;
     metadata?: Metadata;
   }
+  interface SocialNetworks {
+    metadata?: {
+      social_network?: {
+        twitter?: string;
+        instagram?: string;
+        linkedin?: string;
+        github?: string;
+      };
+    };
+  }
 }
 
 export declare namespace GlobalReactQueryTypes {
