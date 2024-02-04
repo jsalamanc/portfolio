@@ -42,6 +42,7 @@ export type SectionsProps = {
 export type IndexProps = {
   metadata?: SectionsProps;
   blogEntries?: IndexBlogProps;
+  socialNetworks?: GlobalTypes.SocialNetworks;
 };
 
 // TYPES OF BACKEND

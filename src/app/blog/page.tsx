@@ -11,6 +11,10 @@ export async function generateMetadata() {
     title: data?.generalConfig?.metadata?.seo_metadata_blog?.title,
     description: data?.generalConfig?.seo_metadata_blog?.description,
     keywords: data?.generalConfig?.metadata?.seo_metadata_blog?.keywords,
+    openGraph: {
+      title: data?.generalConfig?.metadata?.seo_metadata_blog?.title,
+      description: data?.generalConfig?.seo_metadata_blog?.description,
+    },
   };
 
   return metadata;
