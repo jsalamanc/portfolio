@@ -27,13 +27,15 @@ export const BlogPage = () => {
 
   return (
     <>
-      <Slider
-        articles={
-          data?.objects?.length === 1
-            ? data?.objects
-            : data?.objects?.slice(0, 4)
-        }
-      />
+      <div className='mt-[5rem]'>
+        <Slider
+          articles={
+            data?.objects?.length === 1
+              ? data?.objects
+              : data?.objects?.slice(0, 4)
+          }
+        />
+      </div>
       <ListArticles title='Publicaciones' articles={data?.objects} />
     </>
   );

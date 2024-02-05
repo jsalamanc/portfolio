@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang='es'>
       <body
-        className={`${sora.className} scrollbar scrollbar-thumb-zinc-700 scrollbar-track-zinc-800`}
+        className={`${sora.className} scrollbar scrollbar-thumb-zinc-700 scrollbar-track-zinc-800 bg-gray-900`}
         style={{ overflowX: 'hidden' }}
       >
         <Provider>{children}</Provider>
