@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormContact } from '@/components/ui/Form/FormContact';
+import { FormContact } from '@/components/ui/Form/FormContact/FormContact';
 
 export const Contact = () => {
   return (
