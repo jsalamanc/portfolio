@@ -125,6 +125,7 @@ export const Hero = ({
         <div className={styles.stack}>
           {dataImgs?.map((img) => (
             <Image
+              key={img.title}
               src={img.src}
               alt=''
               width={img.with}

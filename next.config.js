@@ -7,7 +7,10 @@ const nextConfig = {
     COSMIC_WRITE_KEY: `${process.env.COSMIC_WRITE_KEY}`,
     NEXT_COSMIC_URL_FETCH: `${process.env.COSMIC_URL_FETCH}`,
     NEXT_NODE_ENV: `${process.env.NODE_ENV}`,
-    NEXT_URL_PAGE: `${process.env.URL_PAGE}`
+    NEXT_URL_PAGE: `${process.env.URL_PAGE}`,
+    NEXT_SPREADSHEET_ID: `${process.env.SPREADSHEET_ID}`,
+    NEXT_CLIENT_EMAIL: `${process.env.CLIENT_EMAIL}`,
+    NEXT_PRIVATE_KEY: `${process.env.PRIVATE_KEY}`,
   },
   images: {
     remotePatterns: [

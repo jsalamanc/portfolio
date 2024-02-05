@@ -107,7 +107,7 @@ export const AboutMe = ({ firstSection, secondSection }: AboutMeProps) => {
             </div>
             <div className='flex flex-col gap-[1rem] w-full lg:w-[60%]'>
               {secondSection?.skills?.map((skill) => (
-                <div>
+                <div key={skill.skill}>
                   <div className='bg-stone-700 rounded-full h-[0.5rem !important]'>
                     <div
                       className='w-full h-[0.3rem] rounded-full'

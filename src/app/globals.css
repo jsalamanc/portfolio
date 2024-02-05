@@ -23,4 +23,7 @@
       @apply text-cyan-400 hover:underline;
     }
   }
+  .input-primary {
+    @apply p-2 border border-gray-500 outline-none rounded-md bg-gray-900 resize-none text-slate-400;
+  }
 }

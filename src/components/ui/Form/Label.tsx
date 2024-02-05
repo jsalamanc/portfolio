@@ -8,7 +8,7 @@ export const Label = (props: FormProps.LabelProps) => {
   const styles = {
     label: cn(
       { 'text-slate-400': !isErrors },
-      { 'text-red-300': isErrors },
+      { 'text-red-500': isErrors },
       className
     ),
   };
