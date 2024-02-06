@@ -22,10 +22,15 @@ export const HeroPost = ({
       'animate-pulse bg-slate-700 rounded-md': !title,
       'w-[90%] h-10': !title,
     }),
-    description: cn('mb-5', 'text-gray-400 leading-7 text-normal font-light', {
-      'animate-pulse bg-slate-700 rounded-md': !description,
-      'w-[100%] h-[8rem]': !description,
-    }),
+    description: cn(
+      'mb-5',
+      'leading-7 text-normal font-light',
+      'text-gray-400',
+      {
+        'animate-pulse bg-slate-700 rounded-md': !description,
+        'w-[100%] h-[8rem]': !description,
+      }
+    ),
     extraInfo: cn('flex flex-wrap gap-2 mb-4', {
       'animate-pulse bg-slate-700 rounded-md': !category,
       'w-[60%] h-6': !category,
@@ -38,7 +43,6 @@ export const HeroPost = ({
       }
     ),
   };
-
   return (
     <section className='pt-[5.25rem] pb-8 bg-gray-800'>
       <div className='ml-auto mr-auto w-[97%] max-w-[82rem] grid grid-cols-10 gap-8 items-center'>
