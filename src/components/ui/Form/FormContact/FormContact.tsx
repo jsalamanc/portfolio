@@ -30,7 +30,7 @@ export const FormContact = () => {
       onSubmit={handleSubmit(submit)}
     >
       <div className='flex flex-col gap-3'>
-        <Label htmlFor='name' text='Name' isErrors={false} />
+        <Label htmlFor='name' text='Nombre' isErrors={false} />
         <input
           className='input-primary'
           type='text'
@@ -42,7 +42,7 @@ export const FormContact = () => {
       <div className='flex flex-col gap-3'>
         <Label
           htmlFor='email'
-          text='Email'
+          text='Correo Electornico'
           isErrors={errors?.email?.message ? true : false}
         />
         <input
@@ -57,7 +57,7 @@ export const FormContact = () => {
         )}
       </div>
       <div className='flex flex-col gap-3'>
-        <Label htmlFor='subject' text='Subject' isErrors={false} />
+        <Label htmlFor='subject' text='Asunto' isErrors={false} />
         <input
           className='input-primary'
           type='text'
@@ -66,7 +66,7 @@ export const FormContact = () => {
         />
       </div>
       <div className='flex flex-col gap-3'>
-        <Label htmlFor='message' text='Message' isErrors={false} />
+        <Label htmlFor='message' text='Mensaje' isErrors={false} />
         <textarea
           className='input-primary'
           id='message'
