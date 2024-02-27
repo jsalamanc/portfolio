@@ -25,7 +25,7 @@ export const HeroPost = ({
     description: cn(
       'mb-5',
       'leading-7 text-normal font-light',
-      'text-gray-400',
+      'text-gray-300',
       {
         'animate-pulse bg-slate-700 rounded-md': !description,
         'w-[100%] h-[8rem]': !description,

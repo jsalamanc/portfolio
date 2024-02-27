@@ -17,10 +17,17 @@
       @apply text-white;
     }
     & p {
-      @apply text-gray-400 leading-7;
+      @apply text-gray-300 leading-7;
     }
     & a {
       @apply text-cyan-400 hover:underline;
+    }
+    & ul,
+    ol {
+      @apply list-disc text-gray-300 ml-[2rem];
+    }
+    & code {
+      @apply text-gray-300 bg-gray-700 rounded-md p-1;
     }
   }
   .input-primary {

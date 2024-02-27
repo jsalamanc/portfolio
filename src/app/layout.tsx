@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Sora } from 'next/font/google';
 import { Provider } from '@/lib/Provider';
 import './globals.css';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const sora = Sora({ subsets: ['latin'] });
 
@@ -35,6 +36,7 @@ export default function RootLayout({
         className={`${sora.className} scrollbar scrollbar-thumb-zinc-700 scrollbar-track-zinc-800 bg-gray-900`}
         style={{ overflowX: 'hidden' }}
       >
+        <GoogleAnalytics gaId='G-HY41YEQBK1' />
         <Provider>{children}</Provider>
       </body>
     </html>
